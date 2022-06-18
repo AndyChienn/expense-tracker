@@ -1,0 +1,41 @@
+<h1 class="my-2 restaurant-show-title text-center">ADD EXPENSE</h1>
+<div class="container mt-3" style="max-width: 600px">
+  <form action="/restaurants" method="POST">
+
+    <div class="mb-3">
+      <label for="name" class="form-label">NAME<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="name" placeholder="Name" name="name" required />
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">DATE<span class="text-danger">*</span></label>
+      <input type="date" class="form-control" id="date" placeholder="chose date" name="name_en" required />
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Category<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="category" placeholder="choose" list="categoryOptions" name="category"
+        required />
+      <datalist id="categoryOptions">
+        <option>家居物業</option>
+        <option>交通出行</option>
+        <option>休閒娛樂</option>
+        <option>餐飲食品</option>
+        <option>其他</option>
+      </datalist>
+    </div>
+    <div class="mb-3">
+      <label for="cost" class="form-label">金額<span class="text-danger">*</span></label>
+      <input type="number" class="form-control" id="cost" name="cost" required />
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-secondary">
+        ADD
+      </button>
+      <a href="/">
+        <button type="button" class="btn btn-outline-secondary">
+          BACK
+        </button>
+      </a>
+    </div>
+  </form>
+</div>

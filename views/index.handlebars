@@ -1,2 +1,51 @@
-<h1> HELLO WORLD</h1>
-<i class="fa-solid fa-house"></i>
+<div class="container-fluid mt-3" style="max-width: 600px">
+  <div class="category d-flex flex-row" style="justify-content: space-between">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+
+    <div class="addExpense mx-5">
+      <button class="btn btn-secondary btn ">ADD</button>
+    </div>
+  </div>
+
+  <ul class="list-group mt-3">
+    <li class="list-group-item">
+      <div class="d-flex row">
+        <div class="col-2 d-flex flex-column house" style="margin: auto">
+          <i class="fa-solid fa-house" style='color: tomato'></i>
+        </div>
+        <div class="col d-flex flex-column justify-content-center">
+          <span>房屋租金</span>
+          <span>2022.06.15</span>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-center ">
+          <span>$50000</span>
+        </div>
+        <div class="col-3 d-flex align-items-center " style="margin-left: 20px">
+          <a href="/expense/{{this._id}}/edit" class="text-decoration-none"><i class="fa-solid fa-file-pen mr-3"
+              style='color: tomato'></i></a>
+          <form action='/records/{{this._id}}?_method=DELETE' method='POST'>
+            <button type='submit' class='btn text-decoration-none'>
+              <i class="fa-solid fa-trash-arrow-up" style='color: tomato'></i>
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </li>
+  </ul>
+
+  <div class="text-center total mt-5" style="font-size: 30px">TOTAL:$100000
+  </div>
+</div>
