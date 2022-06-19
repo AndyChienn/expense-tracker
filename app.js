@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -11,6 +12,12 @@ require('./config/mongoose')
 
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+app.use(session({
+  secret: 'thisismysecret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 
 app.use(methodOverride('_method'))
