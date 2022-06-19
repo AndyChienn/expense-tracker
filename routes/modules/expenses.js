@@ -8,16 +8,18 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { name, date, cost, category } = req.body
-  return Expense.create({ name, date, cost, category })
+  const userId = req.user._id
+  const { name, date, cost, category, } = req.body
+  return Expense.create({ name, date, cost, category, userId })
     .then(console.log('new expense added', req.body))
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Expense.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Expense.findOne({ _id, userId })
     .lean()
     .then((expense) => {
       console.log(expense)
@@ -27,18 +29,26 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   const { name, date, cost, category } = req.body
-  return Expense.findByIdAndUpdate(id, req.body)
-    .then(() => {
-      res.redirect('/')
+  return Expense.findOne({ _id, userId })
+    .then((expense) => {
+      expense.name = name
+      expense.date = date
+      expense.cost = cost
+      expense.category = category
+      return expense.save()
     })
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Expense.findByIdAndDelete(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Expense.findOne({ _id, userId })
+    .then(expense => expense.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

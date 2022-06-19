@@ -4,8 +4,10 @@ const router = express.Router()
 const Expense = require('../../models/Expense')
 
 router.get('/', (req, res) => {
-  Expense.find({})
+  const userId = req.user._id
+  Expense.find({ userId })
     .lean()
+    .sort({ date: 'asc' })
     .then(expenses => {
       let totalAmount = 0
       expenses.forEach(expense => {
