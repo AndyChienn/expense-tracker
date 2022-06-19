@@ -2,13 +2,16 @@
 <div class="container mt-3" style="max-width: 600px">
   <form action="/expenses/{{expense._id}}?_method=PUT" method="POST">
     <div class="mb-3">
-      <label for="name" class="form-label">店名<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{epxense.name}}" required />
+      <label for="name" class="form-label">名稱<span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{expense.name}}" required />
     </div>
+
     <div class="mb-3">
       <label for="date" class="form-label">DATE<span class="text-danger">*</span></label>
-      <input type="date" class="form-control" id="date" placeholder="" name="date" value="{{epxense.date}}" required />
+      <input type="date" class="form-control" id="date" placeholder="choose date" name="date" value="{{ expense.date }}"
+        required />
     </div>
+
     <div class="mb-3">
       <label for="category" class="form-label">Category<span class="text-danger">*</span></label>
       <input type="text" class="form-control" id="category" placeholder="choose" list="categoryOptions" name="category"

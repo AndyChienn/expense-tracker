@@ -13,27 +13,28 @@
     </div>
 
     <div class="addExpense mx-5">
-      <button class="btn btn-secondary btn ">ADD</button>
+      <a class="btn btn-secondary btn" href="/expenses/new">ADD</a>
     </div>
   </div>
 
   <ul class="list-group mt-3">
+    {{#each expenses}}
     <li class="list-group-item">
       <div class="d-flex row">
         <div class="col-2 d-flex flex-column house" style="margin: auto">
           <i class="fa-solid fa-house" style='color: tomato'></i>
         </div>
         <div class="col d-flex flex-column justify-content-center">
-          <span>房屋租金</span>
-          <span>2022.06.15</span>
+          <span>{{this.name}}</span>
+          <span>{{this.date}}</span>
         </div>
         <div class="col-3 d-flex flex-column justify-content-center ">
-          <span>$50000</span>
+          <span>${{this.cost}}</span>
         </div>
         <div class="col-3 d-flex align-items-center " style="margin-left: 20px">
-          <a href="/expense/{{this._id}}/edit" class="text-decoration-none"><i class="fa-solid fa-file-pen mr-3"
+          <a href="/expenses/{{this._id}}/edit" class="text-decoration-none"><i class="fa-solid fa-file-pen mr-3"
               style='color: tomato'></i></a>
-          <form action='/records/{{this._id}}?_method=DELETE' method='POST'>
+          <form action='/expenses/{{this._id}}?_method=DELETE' method='POST'>
             <button type='submit' class='btn text-decoration-none'>
               <i class="fa-solid fa-trash-arrow-up" style='color: tomato'></i>
             </button>
@@ -44,8 +45,9 @@
       </div>
 
     </li>
+    {{/each}}
   </ul>
 
-  <div class="text-center total mt-5" style="font-size: 30px">TOTAL:$100000
+  <div class="text-center total mt-5" style="font-size: 30px">TOTAL:${{totalAmount}}
   </div>
 </div>
