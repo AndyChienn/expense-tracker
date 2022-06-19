@@ -7,7 +7,9 @@ const app = express()
 const PORT = 3000
 
 const routes = require('./routes')
+const usePassport = require('./config/passport')
 require('./config/mongoose')
+
 
 
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
@@ -22,6 +24,8 @@ app.use(session({
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
+
+usePassport(app)
 
 app.use(routes)
 
