@@ -3,12 +3,21 @@
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
         aria-expanded="false">
-        Dropdown button
+        {{#if categoryName}}{{categoryName}}{{else}}全部{{/if}}
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li>
+          <a class="dropdown-item" href="/">
+            <i class="fa-solid fa-align-justify mx-2" style="color:rgb(73, 51, 47)"></i>全部
+          </a>
+        </li>
+        {{#each categories}}
+        <li>
+          <a class="dropdown-item" href="/?category={{this.name}}">
+            <i class="{{this.icon}} mx-2" style="color:rgb(73, 51, 47)"></i>{{this.name}}
+          </a>
+        </li>
+        {{/each}}
       </ul>
     </div>
 
@@ -22,7 +31,7 @@
     <li class="list-group-item">
       <div class="d-flex row">
         <div class="col-2 d-flex flex-column house" style="margin: auto">
-          <i class="fa-solid fa-house" style='color: tomato'></i>
+          <i class="{{this.icon}}" style='color: tomato'></i>
         </div>
         <div class="col d-flex flex-column justify-content-center">
           <span>{{this.name}}</span>
@@ -47,7 +56,12 @@
     </li>
     {{/each}}
   </ul>
+  <div class="d-flex flex-row justify-content-center mt-5" style="max-width: 600px">
+    <span class="text-center " style="font-size: 25px; color:gray">TOTAL:</span>
+    <span class="text-center mx-3" style="font-size: 25px; color:gray">${{totalAmount}}</span>
 
-  <div class="text-center total mt-5" style="font-size: 30px">TOTAL:${{totalAmount}}
+
   </div>
+  {{!-- <div class="text-center total mt-5" style="font-size: 25px">TOTAL:$ {{totalAmount}}
+  </div> --}}
 </div>
