@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/User')

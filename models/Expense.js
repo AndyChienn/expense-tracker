@@ -12,7 +12,7 @@ const expenseSchema = new Schema({
   },
   categoryId: {
     type: Schema.Types.ObjectId,
-    ref: 'category',
+    ref: 'Category',
     index: true,
     required: true
   }
