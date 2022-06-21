@@ -1,4 +1,4 @@
-const Category = require('../category')
+const Category = require('../Category')
 const User = require('../User')
 const Expense = require('../Expense')
 const bcrypt = require('bcryptjs')

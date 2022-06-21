@@ -1,4 +1,4 @@
-const Category = require('../category')
+const Category = require('../Category')
 const db = require('../../config/mongoose')
 
 if (process.env.NODE_ENV !== 'production') {
